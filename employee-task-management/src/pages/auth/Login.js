@@ -2,6 +2,22 @@ import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function Login() {
+  // const userRef = useRef();
+  // const errRef = useRef();
+
+  // const [email, setEmail] = useState('');
+  // const [pass, setPass] = useState('');
+  // const [errMsg, setErrMsg] = useState('');
+  // const [success, setSuccess] = useState(false);
+
+  // useEffect(() => {
+  //   useRef.current.focus()
+  // }, [])
+
+  // useEffect(() => {
+  //   setErrMsg('');
+  // }, [email, pass])
+
   return (
     <div class="flex h-screen bg-blue-200 items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
       <div class="w-full max-w-md space-y-8">

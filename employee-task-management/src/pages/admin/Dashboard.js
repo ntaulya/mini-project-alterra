@@ -1,9 +1,14 @@
 import React from "react";
+import { useState } from "react";
 import { LinkIcon } from '@heroicons/react/20/solid'
 import Atas from '../layout/Navbar'
+import MyModal from '../admin/Task'
 
 
 export default function AdminDashboard() {
+    const [showMyModal, setShowMyModal] = useState(false)
+    const handleOnClose = () => setShowMyModal(false)
+
     return (
         <>
             <Atas />
@@ -47,7 +52,7 @@ export default function AdminDashboard() {
                         </div>
                         <div className="mt-5 flex lg:mt-0 lg:ml-4">
                             <span className="ml-3 hidden sm:block">
-                                <button class="inline-flex m-3 bg-blue-800 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                                <button onClick={() => {setShowMyModal(true)}} class="inline-flex m-3 bg-blue-800 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
                                         <path fill-rule="evenodd" d="M12 5.25a.75.75 0 01.75.75v5.25H18a.75.75 0 010 1.5h-5.25V18a.75.75 0 01-1.5 0v-5.25H6a.75.75 0 010-1.5h5.25V6a.75.75 0 01.75-.75z" clip-rule="evenodd" />
                                     </svg>
@@ -62,9 +67,9 @@ export default function AdminDashboard() {
                                 </button>
                             </span>
                         </div>
+                        <MyModal onClose={handleOnClose} visible={showMyModal}/>
                     </div>
                 </div>
-                <hr></hr>
 
                 <div className="text-start mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
                     <div className="lg:flex lg:items-center lg:justify-between">
@@ -116,7 +121,6 @@ export default function AdminDashboard() {
                         </div>
                     </div>
                 </div>
-                <hr></hr>
 
                 <div className="text-start mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
                     <div className="lg:flex lg:items-center lg:justify-between">
@@ -168,7 +172,6 @@ export default function AdminDashboard() {
                         </div>
                     </div>
                 </div>
-                <hr></hr>
 
                 <div className="text-start mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
                     <div className="lg:flex lg:items-center lg:justify-between">
@@ -220,7 +223,7 @@ export default function AdminDashboard() {
                         </div>
                     </div>
                 </div>
-                <hr></hr>
+                
             </main>
         </>
     )

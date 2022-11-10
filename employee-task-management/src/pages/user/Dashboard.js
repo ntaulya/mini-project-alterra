@@ -1,9 +1,13 @@
 import React from "react";
+import { useState } from "react";
 import { CalendarIcon, LinkIcon } from '@heroicons/react/20/solid'
 import Atas from '../layout/Navbar'
-
+import MyModal from './Task'
 
 export default function UserDashboard() {
+    const [showMyModal, setShowMyModal] = useState(false)
+    const handleOnClose = () => setShowMyModal(false)
+
     return (
         <>
             <Atas />
@@ -29,7 +33,7 @@ export default function UserDashboard() {
                         </div>
                         <div className="mt-5 flex lg:mt-0 lg:ml-4">
                             <span className="ml-3 hidden sm:block">
-                                <button
+                                <button onClick={() => {setShowMyModal(true)}}
                                     type="button"
                                     className="inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                                 >
@@ -38,9 +42,10 @@ export default function UserDashboard() {
                                 </button>
                             </span>
                         </div>
+                        <MyModal onClose={handleOnClose} visible={showMyModal}/>
                     </div>
                 </div>
-                <hr></hr>
+                
 
                 <div className="text-start mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
                     <div className="lg:flex lg:items-center lg:justify-between">
@@ -68,7 +73,7 @@ export default function UserDashboard() {
                         </div>
                     </div>
                 </div>
-                <hr></hr>
+                
 
                 <div className="text-start mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
                     <div className="lg:flex lg:items-center lg:justify-between">
@@ -96,7 +101,7 @@ export default function UserDashboard() {
                         </div>
                     </div>
                 </div>
-                <hr></hr>
+                
 
                 <div className="text-start mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
                     <div className="lg:flex lg:items-center lg:justify-between">
@@ -124,7 +129,7 @@ export default function UserDashboard() {
                         </div>
                     </div>
                 </div>
-                <hr></hr>
+                
             </main>
         </>
     )
