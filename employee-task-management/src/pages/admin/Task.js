@@ -1,5 +1,4 @@
-import { data } from "autoprefixer";
-import { React, useState } from "react";
+import { React, useState, useEffect } from "react";
 import { Form, Row, Col } from "react-bootstrap"
 import UserTask from "../user/Task";
 
@@ -16,9 +15,8 @@ export default function MyModal({ visible, onClose }) {
     const [isSubmit, setIsSubmit] = useState(false);
 
     const handleChange = (e) => {
-        console.log(e.target);
-        const { name, value } = e.target;
-        console.log(name, value);
+        const name = e.target.name;
+        const value = e.target.value;
         setformValues({ ...formValues, [name]: value });
     };
 
@@ -28,6 +26,12 @@ export default function MyModal({ visible, onClose }) {
         // alert(formValues)
         console.log(formValues);
     }
+
+    // const tambahTask = (title) => {
+    //     // let id = this.state.initialValues[this.state.initialValues.length-1].id + 1
+    //     // const newTodo = {nameofTask, ...deadline, category, addTask}
+    //     this.setState({initialValues: [...this.state.initialValues, newTodo]})
+    // }
 
     const handleOnClose = (e) => {
         if (e.target.id === "container") onClose()
@@ -72,7 +76,7 @@ export default function MyModal({ visible, onClose }) {
                                 Category
                             </Form.Label>
                             <Col sm={6}>
-                                <Form.Select aria-label="Default select example" onChange={handleChange}>
+                                <Form.Select aria-label="Default select example" name="category" onChange={handleChange}>
                                     <option value="1">Urgent</option>
                                     <option value="2">Priority</option>
                                     <option value="3">Basic</option>
@@ -86,18 +90,19 @@ export default function MyModal({ visible, onClose }) {
                                 Add Task
                             </Form.Label>
                             <Col sm={6}>
-                                <Form.Control type="file" />
+                                <Form.Control type="file" name="addTask"/>
                             </Col>
                         </Form.Group>
 
                     </Form>
-                    <UserTask data={initialValues}/>
+                    {/* <UserTask initialValues={this.state.initialValues} tambahTask={this.tambahTask} hapusTask={this.hapusTask}/> */}
+
                 </div>
                 <div className="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
                     <button
                         type="button"
                         className="inline-flex w-full justify-center rounded-md border border-transparent bg-blue-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 sm:ml-3 sm:w-auto sm:text-sm"
-                        onClick={() => handleSubmit({})}
+                        onClick={handleSubmit}
                     >
                         Save
                     </button>
